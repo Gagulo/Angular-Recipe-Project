@@ -1,9 +1,15 @@
 .btn
- {
+{
 margin: 2px;
- }
+}
 
 .ingr
- {
+{
 margin-top: 5px;
- }
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched
+{
+  border: 1px solid red;
+}
