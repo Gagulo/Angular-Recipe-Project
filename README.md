@@ -9,4 +9,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Recipe / Ingredient App
 
-It's not completed in 100% yet.
+This app is not mine, I'm simply coding along with Maximilian Schwarzmüller the Udemy expert.
