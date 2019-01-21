@@ -10,6 +10,8 @@
         <li routerLinkActive="active"><a routerLink="/shopping-list" routerLinkActive="router-link-active" >Shopping List</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/signup']">Register</a></li>
+        <li><a [routerLink]="['/signin']">Login</a></li>
         <li class="dropdown" appDropdown>
           <a style="cursor: pointer" class="dropdown-toggle" role="button">Mannage <span class="caret"></span></a>
           <ul class="dropdown-menu">
