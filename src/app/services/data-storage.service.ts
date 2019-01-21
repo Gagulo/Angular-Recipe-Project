@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { RecipeService } from './recipe.service';
 import { Recipe } from '../recipes/recipe.model';
+import { AuthService } from './auth.service';
 
 
 @Injectable({
@@ -13,14 +14,19 @@ import { Recipe } from '../recipes/recipe.model';
 export class DataStorageService {
 
   constructor(private http: Http,
-              private recipeService: RecipeService) {}
+              private recipeService: RecipeService,
+              private authService: AuthService) {}
 
   storeRecipe() {
-    return this.http.put('https://angular-recipe-app-71500.firebaseio.com/recipes.json', this.recipeService.getRecipes());
+    const token = this.authService.getIdToken();
+
+    return this.http.put('https://angular-recipe-app-71500.firebaseio.com/recipes.json?auth=' + token, this.recipeService.getRecipes());
   }
 
   getRecipe() {
-    this.http.get('https://angular-recipe-app-71500.firebaseio.com/recipes.json').pipe(map(
+    const token = this.authService.getIdToken();
+
+    this.http.get('https://angular-recipe-app-71500.firebaseio.com/recipes.json?auth=' + token).pipe(map(
       (response: Response) => {
         const recipes: Recipe[] = response.json();
         for (let recipe of recipes) {
