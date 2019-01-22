@@ -3,18 +3,15 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +19,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     HttpModule,
     SharedModule,
     ShoppingListModule,
-    AuthModule
+    AuthModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

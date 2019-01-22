@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { WelcomeComponent } from './core/welcome/welcome.component';
 
 const appRoutes: Routes = [
   { path: '', component: WelcomeComponent },
