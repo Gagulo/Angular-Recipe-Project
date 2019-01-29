@@ -1,18 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { DataStorageService } from '../../services/data-storage.service';
 import { AuthService } from '../../services/auth.service';
+import * as fromApp from '../../reducers/app.reducers';
+import * as fromAuth from '../../reducers/auth.reducers';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  authState: Observable<fromAuth.State>;
 
   constructor(private dataStorage: DataStorageService,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private store: Store<fromApp.AppState>) {}
+
+  ngOnInit() {
+    this.authState = this.store.select('auth');
+  }
 
   onSaveData() {
     this.dataStorage.storeRecipe().subscribe((response: Response) => {
@@ -26,9 +36,5 @@ export class HeaderComponent {
 
   onLogout() {
     this.authService.logout();
-  }
-
-  isAuthenticated() {
-    return this.authService.isAuthenticated();
   }
 }
