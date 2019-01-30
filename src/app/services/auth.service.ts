@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+
 import * as firebase from 'firebase/app';
 import * as fromApp from '../reducers/app.reducers';
 import * as AuthActions from '../reducers/auth.actions';
@@ -19,6 +20,12 @@ export class AuthService {
     .then (
       user => {
         this.store.dispatch(new AuthActions.Singup());
+        firebase.auth().currentUser.getIdToken()
+          .then(
+            (token: string) => {
+              this.store.dispatch(new AuthActions.SetToken(token));
+            }
+          );
       }
     )
       .catch(
@@ -37,12 +44,12 @@ export class AuthService {
             (token: string) => {
               this.store.dispatch(new AuthActions.SetToken(token));
             }
-          )
+          );
         }
       )
       .catch(
         error => console.log(error)
-      )
+      );
   }
 
   logout() {

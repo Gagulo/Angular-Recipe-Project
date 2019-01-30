@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Response } from '@angular/http';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -25,7 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSaveData() {
-    this.dataStorage.storeRecipe().subscribe((response: Response) => {
+    this.dataStorage.storeRecipe().subscribe((response) => {
         console.log(response);
       });
   }
