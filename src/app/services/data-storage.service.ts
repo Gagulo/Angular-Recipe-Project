@@ -3,7 +3,6 @@ import { map } from 'rxjs/operators';
 
 import { RecipeService } from './recipe.service';
 import { Recipe } from '../recipes/recipe.model';
-import { AuthService } from './auth.service';
 import { HttpClient, HttpRequest } from '@angular/common/http';
 
 
@@ -13,8 +12,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 export class DataStorageService {
 
   constructor(private httpClient: HttpClient,
-              private recipeService: RecipeService,
-              private authService: AuthService) {}
+              private recipeService: RecipeService) {}
 
   storeRecipe() {
 
