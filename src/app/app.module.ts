@@ -21,7 +21,7 @@ import { AuthEffects } from './reducers/auth.effects';
     AppComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'app-root'}),
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
